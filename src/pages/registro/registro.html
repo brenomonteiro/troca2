@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar>
+      
+    </ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+    <h3>Troca²</h3>
+    <img src="assets/imgs/logo.png" alt="logo">
+  
+    <form>
+        <ion-item>
+            <ion-label stacked>Nome</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Senha</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label stacked>Confirmar Senha</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+      <button ion-button block  (click)="login()">Registrar</button>
+    </form>
+  </ion-content>
