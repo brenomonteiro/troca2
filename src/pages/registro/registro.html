@@ -1,30 +1,63 @@
 <ion-header>
-    <ion-navbar>
-      
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+
+  </ion-navbar>
+</ion-header>
 
 <ion-content padding>
-    <h3>Troca²</h3>
-    <img src="assets/imgs/logo.png" alt="logo">
-  
-    <form>
-        <ion-item>
-            <ion-label stacked>Nome</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-      <ion-item>
-        <ion-label stacked>Email</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked>Senha</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label stacked>Confirmar Senha</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-      <button ion-button block  (click)="login()">Registrar</button>
-    </form>
-  </ion-content>
+  <h3>Troca²</h3>
+  <img src="assets/imgs/logo.png" alt="logo">
+
+  <form [formGroup]="formRegister" novalidate>
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input type="text" name="name" formControlName="name"
+        [class.invalid]="formRegister.controls['name'].touched && !formRegister.controls['name'].valid"></ion-input>
+    </ion-item>
+    <ion-item for="name" data-error="name is mandatory">
+      Nome
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>E-mail</ion-label>
+      <ion-input type="text" name="email" formControlName="email"
+        [class.invalid]="formRegister.controls['email'].touched && !formRegister.controls['email'].valid"></ion-input>
+    </ion-item>
+    <ion-item for="email" data-error="email is mandatory">
+      Email
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Telefone</ion-label>
+      <ion-input type="text" name="phone" formControlName="phone"
+        [class.invalid]="formRegister.controls['phone'].touched && !formRegister.controls['phone'].valid">
+      </ion-input>
+    </ion-item>
+    <ion-item for="phone" data-error="phone is mandatory">
+      Telefone
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input type="password" name="password" formControlName="password"
+        [class.invalid]="formRegister.controls['password'].touched && !formRegister.controls['password'].valid">
+      </ion-input>
+    </ion-item>
+    <ion-item for="password" data-error="Password is mandatory">
+      Password
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label stacked>Confirmar Senha</ion-label>
+      <ion-input type="password" name="confirmPassword" formControlName="confirmPassword"
+        [class.invalid]="formRegister.controls['confirmPassword'].touched && !formRegister.controls['confirmPassword'].valid">
+      </ion-input>
+    </ion-item>
+    <ion-item for="confirmPassword" data-error="confirmPassword is mandatory">
+      Confirmar Senha
+    </ion-item>
+
+    <button ion-button block (click)="login()">Registrar</button>
+  </form>
+</ion-content>

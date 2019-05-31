@@ -17,7 +17,7 @@ import 'rxjs/add/operator/toPromise';
 })
 export class HomePage {
 
-  form: FormGroup;
+  formSignin: FormGroup;
 
   private url: string = 'https://test-back-troca.herokuapp.com/signin';
 
@@ -32,7 +32,7 @@ export class HomePage {
   ) { }
 
   ngOnInit(): any {
-    this.form = this.fb.group({
+    this.formSignin = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     })
@@ -47,11 +47,11 @@ export class HomePage {
   }
 
   login() {
-    this.onSignin(this.form.value);
+    this.onSignin(this.formSignin.value);
   }
 
   onSignin(user: User) {
-    console.log(this.form.value);
+    console.log(this.formSignin.value);
     console.log(user);
     let headers = new Headers(
       {
@@ -59,23 +59,19 @@ export class HomePage {
       });
     let options = new RequestOptions({ headers: headers });
 
-    return new Promise((resolve, reject) => {
-      this.http.post('https://test-back-troca.herokuapp.com/signin', user, options)
-        .toPromise()
-        .then((response) => {
-          console.log('API Response : ', response.json());
-          this.navCtrl.setRoot('CategoriasPage');
-        })
-        .catch((error) => {
-          console.error('API Error : ', error.status);
-          console.error('API Error : ', JSON.stringify(error));
-        });
-    });
-
-    this.navCtrl.setRoot('CategoriasPage');
+    this.http.post('https://test-back-troca.herokuapp.com/signin', user, options)
+      .toPromise()
+      .then((response) => {
+        console.log('API Response : ', response.json());
+        this.navCtrl.setRoot('CategoriasPage');
+      })
+      .catch((error) => {
+        console.error('API Error : ', error.status);
+        console.error('API Error : ', JSON.stringify(error));
+      });
   }
-  registrar() {
 
+  registrar() {
     this.navCtrl.push('RegistroPage');
   }
 
