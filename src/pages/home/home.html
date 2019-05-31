@@ -1,18 +1,25 @@
-
-
 <ion-content padding>
   <h3>Troca²</h3>
   <img src="assets/imgs/logo.png" alt="logo">
 
-  <form>
+  <form [formGroup]="form" novalidate>
+
     <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label stacked>E-mail</ion-label>
+      <ion-input type="text" name="email" formControlName="email" [class.invalid]="form.controls['email'].touched && !form.controls['email'].valid">></ion-input>
     </ion-item>
+    <ion-item for="email" data-error="email is mandatory">
+      Email
+    </ion-item>
+
     <ion-item>
       <ion-label stacked>Senha</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" name="password" formControlName="password" [class.invalid]="form.controls['password'].touched && !form.controls['password'].valid"></ion-input>
     </ion-item>
+    <ion-item for="password" data-error="Password is mandatory">
+      Password
+    </ion-item>
+
     <button ion-button block (click)="login()">Entrar</button>
     <button ion-button block outline (click)="registrar()">Registrar</button>
   </form>
