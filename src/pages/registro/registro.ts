@@ -47,16 +47,18 @@ export class RegistroPage {
     this.onSignin(this.formRegister.value);
   }
 
-  onSignin(user: User) {
-    console.log(this.formRegister.value);
-    console.log(user);
+  newHeaders(){
     let headers = new Headers(
       {
         'Content-Type': 'application/json; charset=utf-8'
       });
     let options = new RequestOptions({ headers: headers });
+    return options
+  }
 
-    this.http.post('https://test-back-troca.herokuapp.com/signup', user, options)
+  onSignin(user: User) {
+
+    this.http.post('https://test-back-troca.herokuapp.com/signup', user, this.newHeaders())
       .toPromise()
       .then((response) => {
         console.log('API Response : ', response.json());
