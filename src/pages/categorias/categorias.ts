@@ -18,26 +18,26 @@ import { CategoriaDTO } from '../../models/categoria.dto';
 export class CategoriasPage {
 
   items: CategoriaDTO[];
-  
+
   constructor(public navCtrl: NavController,
-     public navParams: NavParams,
-     public categoriaService: CategoriaService) {
+    public navParams: NavParams,
+    public categoriaService: CategoriaService) {
   }
 
   ionViewDidLoad() {
     this.categoriaService.findAll()
-      .subscribe(response =>{
-        console.log(response);
+      .subscribe(response => {
+        //        console.log(response);
         this.items = response;
       },
-      error=>{
-        console.log(error);
-      });
-    
-    console.log('ionViewDidLoad CategoriasPage');
+        error => {
+          //        console.log(error);
+        });
+
+    //    console.log('ionViewDidLoad CategoriasPage');
   }
-  f(response){
-    console.log(response);
+  f(response) {
+    //    console.log(response);
   }
 
 }

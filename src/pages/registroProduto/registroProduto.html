@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Troca²</h3>
+  <img src="assets/imgs/logo.png" alt="logo">
+
+  <form [formGroup]="formRegisterProduct" novalidate>
+
+    <ion-item>
+      <ion-label stacked>Nome do produto</ion-label>
+      <ion-input type="text" name="productName" formControlName="productName" [class.invalid]="formRegisterProduct.controls['productName'].touched && !formRegisterProduct.controls['productName'].valid">
+      </ion-input>
+    </ion-item>
+    <ion-item for="productName" data-error="productName is mandatory">
+      Nome do produto
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Tipo do produto</ion-label>
+      <ion-input type="text" name="productType" formControlName="productType" [class.invalid]="formRegisterProduct.controls['productType'].touched && !formRegisterProduct.controls['productType'].valid">
+      </ion-input>
+    </ion-item>
+    <ion-item for="productType" data-error="productType is mandatory">
+      Tipo do produto
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Marca do produto</ion-label>
+      <ion-input type="text" name="productBrand" formControlName="productBrand" [class.invalid]="formRegisterProduct.controls['productBrand'].touched && !formRegisterProduct.controls['productBrand'].valid">
+      </ion-input>
+    </ion-item>
+    <ion-item for="productBrand" data-error="productBrand is mandatory">
+      Marca do produto
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Descrição</ion-label>
+      <ion-input type="text" name="productDescription" formControlName="productDescription" [class.invalid]="formRegisterProduct.controls['productDescription'].touched && !formRegisterProduct.controls['productDescription'].valid">
+      </ion-input>
+    </ion-item>
+    <ion-item for="productDescription" data-error="productDescription is mandatory">
+      Descrição
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Tempo de uso</ion-label>
+      <ion-input type="text" name="productAge" formControlName="productAge" [class.invalid]="formRegisterProduct.controls['productAge'].touched && !formRegisterProduct.controls['productAge'].valid">
+      </ion-input>
+    </ion-item>
+    <ion-item for="productAge" data-error="productAge is mandatory">
+      Tempo de uso
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Categoria</ion-label>
+      <ion-select>
+        <ion-option value="home">Cama, Mesa e Banho</ion-option>
+        <ion-option value="eletro">Eletrônicos</ion-option>
+        <ion-option value="info">Informática</ion-option>
+        <ion-option value="sfone">Smartphone</ion-option>
+      </ion-select>
+    </ion-item>
+    <button ion-button block (click)="registerProduct()">Cadastrar produto</button>
+  </form>
+</ion-content>

@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
+import { Storage } from '@ionic/storage';
 
 
 @IonicPage()
@@ -19,17 +20,12 @@ export class HomePage {
 
   formSignin: FormGroup;
 
-  private url: string = 'https://test-back-troca.herokuapp.com/signin';
-
-  private authenticated = false;
-
-
   constructor(
     private http: Http,
     public navCtrl: NavController,
     public menu: MenuController,
-    private fb: FormBuilder
-  ) { }
+    private fb: FormBuilder,
+    private storage: Storage) { }
 
   ngOnInit(): any {
     this.formSignin = this.fb.group({
@@ -63,6 +59,14 @@ export class HomePage {
       .toPromise()
       .then((response) => {
         console.log('API Response : ', response.json());
+        var obj = response.json();
+        this.storage.set('name', obj.name);
+        this.storage.set('admin', obj.admin);
+        this.storage.set('email', obj.email);
+        this.storage.set('exp', obj.exp);
+        this.storage.set('iat', obj.iat);
+        this.storage.set('id', obj.id);
+        this.storage.set('token', obj.token);
         this.navCtrl.setRoot('CategoriasPage');
       })
       .catch((error) => {
@@ -76,6 +80,7 @@ export class HomePage {
   }
 
   logout() {
+    this.storage.clear();
     this.navCtrl.push('HomePage');
   }
 
